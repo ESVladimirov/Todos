@@ -1,30 +1,15 @@
-import React from 'react';
 import './App.css';
 
-class Todo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.target.labels[0].classList.toggle("checked")
-    
-  }
-
-  render() {
-    return (
-      <div className="Todo" >
-        <label>
-          <input type="checkbox" onClick={this.handleClick}/>
-          {this.props.value}
-        </label>
-      </div>
-    );
-  }
+function Todo(props) {
+  return (
+    <div className="Todo">
+      <label>
+        <input type="checkbox"/>
+        {props.value}
+      </label>
+    </div>
+  );
 }
-
-
 
 function Todos(props) {
   const convertedTodos = props.todos.map((todo) => 
