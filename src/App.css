@@ -1,0 +1,28 @@
+.Card {
+  margin: 10px auto;
+  
+  width: 200px;
+  min-height: 200px;
+  background-color: greenyellow;
+  border: grey 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.Card-top {
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  border-bottom: 1px solid grey;
+}
+
+.Card-bot {
+  font-size: 14px;
+  width: 160px;
+  margin: 10px auto;
+}
+
+.Todo {
+  margin: 5px;
+}
