@@ -1,32 +1,229 @@
+.Actions {
+  width: 100%;
+  height: 25px;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.createList {
+  display: block;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 2px;
+  font-size: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  
+}
+
+.createList:hover {
+  background-color: #1CAC10; /* Green */
+  cursor: pointer;
+}
+
 .Card {
   margin: 10px auto;
-  
   width: 200px;
-  min-height: 200px;
-  background-color: greenyellow;
+  max-height: 300px;
+  background-color: wheat;
   border: grey 1px solid;
   display: flex;
   flex-direction: column;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.Card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .Card-top {
-  padding: 15px;
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 18px;
   border-bottom: 1px solid grey;
 }
 
+.Card-top-title {
+  margin-left: 10px;
+}
+
+.deleteCard {
+  background-color: wheat; /* Green */
+  border: none;
+  color: red;
+  padding: 0px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.deleteCard:hover {
+  background-color: red;
+  color: black;
+  cursor: pointer;
+}
 .Card-bot {
   font-size: 14px;
   width: 160px;
   margin: 10px auto;
 }
 
+.cardName {
+  width: 80%;
+  background-color: wheat;
+  border: 2px solid wheat;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.cardName:hover {
+  width: 80%;
+  background-color: white;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+.cardName:focus {
+  width: 80%;
+  background-color: white;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+.Todos {
+  padding: 0;
+}
+
 .Todo {
-  margin: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteTodo {
+  background-color: wheat;
+  color: black;
+  border: 1px solid wheat;
+  padding: 1px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  border-radius: 50%;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.deleteTodo:hover {
+  background-color: #f44336; /* Green */
+  color: wheat;
+  cursor: pointer;
+}
+
+.addTodo {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 2px;
+}
+
+.addTodo:hover {background-color: #3e8e41}
+
+.addTodo:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
+
+.addTodoInput {
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.addTodoInput:focus {
+  border: 2px solid #555;
+}
+
+.label {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.fake-checkbox-text{
+  width: 110px;
+  margin-left: 5px;
+  user-select: none;
+  word-wrap: break-word;
+}
+
+.checkbox {
+  display: none;
+}
+
+.fake-checkbox {
+  display: inline-block;
+  position: relative;
+  min-width: 10px;
+  height: 10px;
+  border: black 1px solid;
+  border-radius: 10%;
+}
+
+.fake-checkbox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: greenyellow;
+  opacity: 0;
+  transition: .2s;
+  border-radius: 10%;
+}
+
+.checkbox:checked + .fake-checkbox::before {
+  opacity: 1;
 }
 
 .checked {
   text-decoration: line-through;
 }
+
+ul {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+form > input {
+  width: 120px;
+  
+}
+

@@ -1,70 +1,64 @@
 import React from 'react';
 import './App.css';
-
-class Todo extends React.Component {
+import Cards from './components/Cards'
+import Actions from './components/Actions'
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    let cards = JSON.parse(localStorage.getItem('Cards'));
+    this.state = { cards };
+
+    this.createCard = this.createCard.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
-  handleClick(e) {
-    e.target.labels[0].classList.toggle("checked")
-    
+  createCard() {
+    let updatedData;
+    if (this.state.cards) {
+      updatedData = this.state.cards;
+      updatedData.unshift({
+        cardId: Date.now(),
+        cardName: 'Новый список',
+        todos: [],
+      });
+    } else {
+      updatedData = [
+        {
+          cardId: Date.now(),
+          cardName: 'Новый список',
+          todos: [],
+        }
+      ];
+    }
+
+    this.setState({
+      cards: updatedData,
+    })
+
+    localStorage.setItem('Cards', JSON.stringify(updatedData));
+  }
+
+  deleteCard(cardId) {
+    let currentData = JSON.parse(localStorage.getItem('Cards'));
+      if (currentData) {
+        let updatedData = currentData.filter((card) => card.cardId !== cardId);
+
+        localStorage.setItem('Cards', JSON.stringify(updatedData));
+        this.setState({
+          cards: updatedData
+        });
+      }
   }
 
   render() {
     return (
-      <div className="Todo" >
-        <label>
-          <input type="checkbox" onClick={this.handleClick}/>
-          {this.props.value}
-        </label>
+      <div className="App">
+        <Actions createCard={this.createCard}/>
+        <Cards localStorageData={this.state.cards} deleteCard={this.deleteCard}/>
       </div>
     );
   }
-}
-
-
-
-function Todos(props) {
-  const convertedTodos = props.todos.map((todo) => 
-    <Todo key={todo.toString()} value={todo} />
-  )
   
-  return (
-    <div className="Todos">
-      {convertedTodos}
-    </div>
-  );
-}
-
-function Card(props) {
-  let names = ["Хлеб", "Соль", "Молоко", "Сахар", "Колбаса"];
-  return (
-    <div className="Card">
-      <div className="Card-top">
-        <div className="Card-top-title">
-          {props.title}
-        </div>
-        <div className="Card-top-date">
-          {props.date}
-        </div>
-      </div>
-      <div className="Card-bot">
-        <div className="Card-bot-content">
-          <Todos todos={names}/>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <div className="App">
-      <Card title="Покупки" date="26.04"/>
-    </div>
-  );
 }
 
 export default App;
